@@ -9,9 +9,9 @@ $message1 = <<<STR
 STR;
 
 $message2 = <<<STR
-Пароль: 6859
 Спишется 4545,73р.
 Перевод на счет 410011441232434
+Пароль: 6859
 STR;
 
 $message3 = <<<STR
@@ -22,7 +22,7 @@ $message4 = <<<STR
 Недостаточно средств.
 STR;
 
-$messages = [$message1, $message2, $message3, $message4, null, ""];
+$messages = [$message1, $message2, $message3, $message4, "", null];
 
 
 $parser = new YMResponseParser();

@@ -2,9 +2,9 @@
 
 class YMResponseParser
 {
-    private const REGEX_SUM = '#(\d+([.,]\d{1,2})?)р?\.#ui';
-    private const REGEX_CODE = '#([0-9]{4,5}(?![0-9]))#';
-    private const REGEX_WALLET = '#(4100\d{8,})#';
+    private const REGEX_SUM = '/(\d+([.,]\d{1,2})?)р?\./';
+    private const REGEX_CODE = '/(:[ ]{0,1}[0-9]{4}(?![0-9]))/';
+    private const REGEX_WALLET = '/(41001\d{8,})/';
     private const RESPONSE_ERRORS = [
         'Недостаточно средств',
         'неверно'
