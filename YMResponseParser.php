@@ -3,7 +3,7 @@
 class YMResponseParser
 {
     private const REGEX_SUM = '/(\d+([.,]\d{1,2})?)р?\./';
-    private const REGEX_CODE = '/(:[ ]{0,1}[0-9]{4}(?![0-9]))/';
+    private const REGEX_CODE = '/[^,\d](\d{4})[^,\d]/';
     private const REGEX_WALLET = '/(41001\d{8,})/';
     private const RESPONSE_ERRORS = [
         'Недостаточно средств',
@@ -16,12 +16,12 @@ class YMResponseParser
     private $wallet;
 
     /**
-     * @var string
+     * @var float
      */
     private $sum;
 
     /**
-     * @var string
+     * @var int
      */
     private $code;
 
@@ -34,7 +34,7 @@ class YMResponseParser
         $this->validateMessage($message);
 
         $this->wallet = $this->getWalletFromString($message);
-        $this->code = $this->getCodeFromString($message);
+        $this->code = (int) $this->getCodeFromString($message);
         $this->sum = $this->formatFloat($this->getSumFromString($message));
 
         $this->validateResult();
