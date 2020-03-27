@@ -2,7 +2,7 @@
 
 class YMResponseParser
 {
-    private const REGEX_SUM = '/(\d+([.,]\d{1,2})?)р?\./';
+    private const REGEX_SUM = '/(\d+[.,]\d{1,2})/';
     private const REGEX_CODE = '/[^,\d](\d{4})[^,\d]/';
     private const REGEX_WALLET = '/(41001\d{8,})/';
     private const RESPONSE_ERRORS = [
@@ -93,7 +93,7 @@ class YMResponseParser
     private function getSumFromString(string $message): ?string
     {
         preg_match(self::REGEX_SUM, $message, $matches);
-
+        
         return $matches[1] ?? null;
     }
 
